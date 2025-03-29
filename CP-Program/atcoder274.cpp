@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-doubled a,b;
+double a,b;
 
 
 int main(){
