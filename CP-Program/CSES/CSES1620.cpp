@@ -6,7 +6,7 @@ long long int n,t,ki,ans;
 
 bool test(long long int t,vector<long long int>workTime,long long int middle){
     long long int tmp=0;
-    for(.int i=0;i<workTime.size();i++){
+    for(int i=0;i<workTime.size();i++){
         tmp+=middle/workTime[i];
         if(tmp>=t){
             return true;
