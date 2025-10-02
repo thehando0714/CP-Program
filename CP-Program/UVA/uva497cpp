@@ -1,0 +1,59 @@
+
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main(){
+	int n;
+	cin >> n;
+	string line;
+	int t = 0;
+	cin.ignore();
+	getline(cin, line);
+	while (n--)
+	{
+		vector<int>info;
+		while (getline(cin,line))
+		{
+			if (line.empty()) {
+				break;
+			}
+			int tmp = 0;
+			for (int i = 0;i < line.size();i++) {
+				tmp = tmp * 10 + (line[i] - '0');
+			}
+			info.push_back(tmp);
+		}
+		if (t != 0)cout << endl;
+		vector<int>lis(info.size());
+		vector<int>pre(info.size());
+		int bigl = 0,ind=0;
+		for (int i = 0;i < info.size();i++) {
+			pre[i] = i;
+			lis[i] = 1;
+			for (int k = i - 1;k >= 0;k--) {
+				if (info[i] > info[k]) {
+					if (lis[i] < lis[k] + 1) {
+						lis[i] = lis[k] + 1;
+						pre[i] = k;
+					}
+				}
+			}
+			if (lis[i] > bigl) {
+				ind = i;
+				bigl = lis[i];
+			}
+		}
+		cout << "Max hits: " << bigl << "\n";
+		vector<int>tmp1;
+		while (lis[ind] != 1) {
+			tmp1.push_back(info[ind]);
+			ind = pre[ind];
+		}
+		tmp1.push_back(info[ind]);
+		for (int i = tmp1.size() - 1;i >= 0;i--) {
+			cout << tmp1[i] << endl;
+		}
+	}
+}

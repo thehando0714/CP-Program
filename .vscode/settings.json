@@ -37,7 +37,8 @@
         "atomic": "cpp",
         "ios": "cpp",
         "xiosbase": "cpp",
-        "xlocinfo": "cpp"
+        "xlocinfo": "cpp",
+        "algorithm": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
 }
