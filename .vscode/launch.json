@@ -5,14 +5,17 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/${fileBasenameNoExtension}.exe",
-            "args": [],
+            "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe", // 修正使用 ${workspaceFolder}
+            "args": [
+                "case1.txt", // 執行時傳入第一個檔案
+                "ref.txt"    // 執行時傳入第二個檔案
+            ],
             "stopAtEntry": false,
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe",
+            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe", // **更新到新的 GDB 路徑**
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -20,7 +23,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build"
+            "preLaunchTask": "C/C++: Build with OpenCV (SVD)" // 連結到新的編譯任務
         }
     ]
 }

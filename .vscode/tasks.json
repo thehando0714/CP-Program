@@ -1,17 +1,38 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // 這是新的 OpenCV 專用編譯任務，設為預設
         {
-            "label": "build",
-            "type": "shell",
-            "command": "g++",
+            "type": "cppbuild",
+            "label": "C/C++: Build with OpenCV (SVD)",
+            "command": "g++.exe", // 使用 PATH 中新的 g++.exe
             "args": [
-                "-g", "${file}", "-o", "${fileBasenameNoExtension}.exe"
+                "-fdiagnostics-color=always",
+                "-g",
+                "-std=c++11",
+                // 1. 指定 OpenCV 標頭檔路徑 (保持原樣，因為 include 在 install/include)
+                "-IC:/opencv/build_mingw/install/include",
+                // 2. 來源檔案與輸出
+                "${file}",
+                "-o",
+                "${workspaceFolder}\\${fileBasenameNoExtension}.exe",
+                // 3. 修正：指定 OpenCV 函式庫路徑到 'lib' 資料夾
+                "-LC:/opencv/build_mingw/lib", 
+                // 4. 修正：連結 DLL 導入庫
+                "-lopencv_core4120.dll", 
+                "-lopencv_imgproc4120.dll"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
-            }
+                "isDefault": true // 設為預設編譯任務
+            },
+            "detail": "Build the active C++ file with modern MinGW and OpenCV linking."
         }
     ]
 }
