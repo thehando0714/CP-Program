@@ -1,28 +1,21 @@
 {
     "configurations": [
         {
-            "name": "Win32 (OpenCV)",
+            "name": "Win32",
             "includePath": [
-                "${workspaceRoot}",
-                "C:\\mingw64\\include", // 新 MinGW 標頭檔
-                // OpenCV 標頭檔路徑：
-                "C:\\opencv\\build_mingw\\install\\include" 
+                "${workspaceFolder}/**",
+                "C:/msys64/mingw64/include",
+                "C:/msys64/mingw64/include/opencv4"
             ],
             "defines": [
                 "_DEBUG",
-                "UNICODE"
+                "UNICODE",
+                "_UNICODE"
             ],
-            "intelliSenseMode": "gcc-x64",
-            "compilerPath": "C:\\mingw64\\bin\\g++.exe", // 指定新的編譯器
-            "browse": {
-                "path": [
-                    "${workspaceRoot}",
-                    "C:\\mingw64\\include",
-                    "C:\\opencv\\build_mingw\\install\\include"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            }
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4

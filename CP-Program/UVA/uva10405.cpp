@@ -5,9 +5,9 @@ using namespace std;
 int dp[1000][1000];
 int main(){
 	string str1, str2;
-	while (getline(cin, str1)&&getline(cin, str2))
+	while (getline(cin, str1))
 	{
-		
+		getline(cin, str2);
 		
 		for (int i = 0;i <=str1.size();i++) {
 			dp[i][0] = 0;
